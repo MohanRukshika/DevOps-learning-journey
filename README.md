@@ -29,7 +29,7 @@ The goal is not just to learn DevOps tools, but to understand **why, when, and h
 | # | Topic | Status |
 |---|---|---|
 | 01 | 🐧 Linux Fundamentals | 🟡 In Progress |
-| 02 | 🌿 Git & GitHub | ⏳ Planned |
+| 02 | 🌿 Git & GitHub | 🟡 In Progress |
 | 03 | 💻 Shell Scripting | ⏳ Planned |
 | 04 | 🐳 Docker & Containers | ⏳ Planned |
 | 05 | 🔄 CI/CD Pipelines | ⏳ Planned |
