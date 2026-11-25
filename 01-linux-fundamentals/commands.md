@@ -1,14 +1,24 @@
-# Linux Fundamentals — Beginner-Friendly DevOps Command Guide 🐧
+# 🐧 Linux Fundamentals — Command Guide
+
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![Level](https://img.shields.io/badge/Level-Beginner-success?style=for-the-badge)
+
+## 📚 Before You Start
+
+Open Ubuntu (WSL) or a Linux terminal. A terminal is a place where you type commands to interact with your computer. Type each command and press Enter. In examples, replace placeholder names such as `folder`, `file.txt`, `URL`, and `user@server` with your own values. Options such as `-l` change how a command behaves.
+
+Practice in a separate folder first. No previous Linux experience is required.
 
 > Part of the [DevOps Learning Journey](https://github.com/MohanRukshika/DevOps-learning-journey). This guide starts with **why Linux matters**, then explains commands with practical examples. Examples assume Ubuntu in Windows Subsystem for Linux (WSL), but most commands also work on Linux servers.
 
-## 1. What is Linux?
+## 1. 💡 What is Linux?
 
-Linux is an operating-system kernel. Systems built around it, such as **Ubuntu**, are called Linux distributions. They manage files, applications, users, processes, networking, and hardware resources.
+Linux is the kernel (core) of an operating system. It helps software communicate with computer hardware. **Ubuntu** is a Linux distribution: a complete operating system built around the Linux kernel. It lets you manage files, applications, users, and network connections.
 
 You do **not** need to replace Windows to learn Linux. With **WSL**, you can run Ubuntu and Linux commands on a Windows computer.
 
-## 2. Why learn Linux for DevOps?
+## 2. 🚀 Why learn Linux for DevOps?
 
 DevOps is about helping teams **build, test, deliver, and operate software reliably**. Linux matters because it is widely used in the environments where software runs.
 
@@ -35,14 +45,14 @@ Imagine you have a React frontend and a Node.js/Express API. The API works on yo
 
 **Main idea:** Linux commands let you understand, operate, and troubleshoot the environment where your software runs. DevOps is broader than Linux, but Linux is a foundational skill.
 
-## 3. Understand the Linux filesystem
+## 3. 📁 Understand the Linux filesystem
 
 Linux paths begin at the **root directory** `/`. A typical directory tree includes:
 
 ```text
 /
 ├── home/        # Users' home directories
-│   └── rukshi/  # Example Ubuntu user
+│   └── student/ # Example Ubuntu user
 ├── etc/         # System configuration
 ├── var/         # Variable data, often logs in /var/log
 ├── usr/         # Programs and shared resources
@@ -54,7 +64,7 @@ Linux paths begin at the **root directory** `/`. A typical directory tree includ
 | Path or symbol | Meaning |
 | --- | --- |
 | `/` | Filesystem root; also separates path components |
-| `~` | Current user's home directory, such as `/home/rukshi` |
+| `~` | Current user's home directory, such as `/home/student` |
 | `.` | Current directory |
 | `..` | Parent directory |
 | `/mnt/e/Devops` | `E:\Devops` as typically seen from Ubuntu WSL |
@@ -64,7 +74,7 @@ Linux paths begin at the **root directory** `/`. A typical directory tree includ
 
 > **WSL note:** Windows drives are normally mounted under `/mnt/`, but this can be configured differently. Linux file permissions and performance can behave differently on Windows-mounted drives.
 
-## 4. Navigation commands
+## 4. 🧭 Navigation commands
 
 | Command | What it does | Example / when to use it |
 | --- | --- | --- |
@@ -81,13 +91,14 @@ Linux paths begin at the **root directory** `/`. A typical directory tree includ
 | `clear` | Clears visible terminal output | `clear` |
 
 ```bash
-# Go to the project on the Windows E: drive (if stored there)
-cd /mnt/e/Devops/DevOps-learning-journey
+# Create a safe practice folder in your Linux home directory
+mkdir -p ~/linux-practice
+cd ~/linux-practice
 pwd                  # Confirm where you are
-ls -la               # Inspect files, including .git
+ls -la               # Inspect files, including hidden entries
 ```
 
-## 5. Creating, copying, moving, and deleting files
+## 5. 📄 Creating, copying, moving, and deleting files
 
 | Command | What it does | Example |
 | --- | --- | --- |
@@ -105,7 +116,7 @@ ls -la               # Inspect files, including .git
 
 > ⚠️ **Safety:** `rm` usually does not send files to the Recycle Bin. Check your location with `pwd` and inspect targets with `ls` before deleting. Never copy-paste destructive commands without understanding their paths.
 
-## 6. Reading, searching, and editing files
+## 6. ✏️ Reading, searching, and editing files
 
 | Command | What it does | Example / use |
 | --- | --- | --- |
@@ -135,7 +146,9 @@ grep -i "error" app.log
 # Remove the sample log only when finished
 ```
 
-## 7. Output, redirection, and pipes
+## 7. 🔄 Output, redirection, and pipes
+
+Redirection saves command output to a file. A pipe passes output directly to another command. Think of a pipe as connecting two commands so they can work together.
 
 | Syntax | Meaning | Example |
 | --- | --- | --- |
@@ -153,7 +166,9 @@ cat notes.txt | grep "Linux"
 
 **Important:** `>` can erase a file's previous content. Use `>>` to add lines without replacing what was already there.
 
-## 8. System information and process monitoring
+## 8. 📊 System information and process monitoring
+
+A process is a running program. RAM is temporary working memory, and disk space is storage for files. These commands help you check whether a server has enough resources to run an application.
 
 | Command | What it does | Why it matters in DevOps |
 | --- | --- | --- |
@@ -174,7 +189,7 @@ free -h
 df -h
 ```
 
-## 9. Permissions and package management — first look
+## 9. 🔐 Permissions and package management — first look
 
 | Command | What it does | Example |
 | --- | --- | --- |
@@ -184,7 +199,9 @@ df -h
 
 **Concepts:** `chmod` changes permissions; `sudo` runs a command with elevated privileges when authorized; `apt` is Ubuntu's package manager. Only run privileged commands you understand. We'll cover permissions, users, and package management in depth later.
 
-## 10. Networking commands — first look
+## 10. 🌐 Networking commands — first look
+
+An IP address identifies a device on a network. A port identifies a network service on that device. These commands help you check connections and troubleshoot applications.
 
 | Command | What it does | DevOps use |
 | --- | --- | --- |
@@ -197,7 +214,7 @@ df -h
 
 **Note:** Some servers block `ping`; a failed ping does not always mean the server is down.
 
-## 11. Git commands used in this learning journey
+## 11. 🌿 Git commands used in this learning journey
 
 Git is separate from Linux, but we use it in our Linux terminal to save and share lessons.
 
@@ -222,7 +239,7 @@ git push origin main
 
 **Before pushing:** Review `git status` and never commit passwords, access tokens, private keys, or `.env` secrets. The push example assumes your branch is named `main` and your remote is configured.
 
-## 12. Terminal shortcuts
+## 12. ⌨️ Terminal shortcuts
 
 | Shortcut | What it does |
 | --- | --- |
@@ -235,13 +252,13 @@ git push origin main
 | `Ctrl+W` | Searches within Nano |
 | `q` | Exits `less` or `top` |
 
-## 13. Hands-on exercise: create and inspect files
+## 13. 💻 Hands-on exercise: create and inspect files
 
-> Work inside a practice folder to avoid modifying important files. These commands assume your repository is at `E:\Devops\DevOps-learning-journey`; adjust the first path if yours is different.
+> Work inside a practice folder to avoid modifying important files. For this exercise, first clone or locate your learning repository. Replace the example path below with its actual location. Use a fresh lesson folder so existing files are not overwritten.
 
 ```bash
-# 1. Enter the repository
-cd /mnt/e/Devops/DevOps-learning-journey
+# 1. Enter the repository (adjust this path if necessary)
+cd ~/DevOps-learning-journey
 
 # 2. Check your location
 pwd
@@ -274,7 +291,7 @@ git status
 
 **Expected result:** `lesson-01/` contains `hello.txt` and `notes.txt`, both with the same line of text. You should see the new files listed by `git status` as untracked until you stage them.
 
-### Check your understanding
+### 🧠 Check your understanding
 
 1. What is the difference between `pwd` and `ls`?
 2. Why does `mkdir -p` help with nested folders?
@@ -285,7 +302,7 @@ git status
 7. Why might a DevOps Engineer run `tail -f app.log`?
 8. What does `git remote -v` tell you?
 
-## 14. Quick revision: the essential first commands
+## 14. 📝 Quick revision: the essential first commands
 
 Start by practicing these until they feel natural:
 
@@ -304,3 +321,15 @@ nano      Edit text
 which     Locate an executable in PATH
 ```
 
+
+
+---
+
+## 🎯 Key Takeaways
+
+- Linux is a foundational skill for managing servers and applications in DevOps.
+- Check your current directory before creating, moving, or deleting files.
+- Practice commands in a safe folder and understand their purpose before using them on a real server.
+- Use monitoring and networking commands to investigate problems.
+
+*Part of my [DevOps Learning Journey](../README.md).*
